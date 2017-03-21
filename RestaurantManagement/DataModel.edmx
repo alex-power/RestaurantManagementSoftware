@@ -4,11 +4,362 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="DataModelTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Users" EntityType="DataModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="DataModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FoodItems" EntityType="DataModel.Store.FoodItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reservations" EntityType="DataModel.Store.Reservations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reviews" EntityType="DataModel.Store.Reviews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkSchedules" EntityType="DataModel.Store.WorkSchedules" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Restaurants" EntityType="DataModel.Store.Restaurants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tables" EntityType="DataModel.Store.Tables" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Customer" EntityType="DataModel.Store.Users_Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Employee" EntityType="DataModel.Store.Users_Employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Server" EntityType="DataModel.Store.Users_Server" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Kitchen" EntityType="DataModel.Store.Users_Kitchen" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Manager" EntityType="DataModel.Store.Users_Manager" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FoodItemOrder" EntityType="DataModel.Store.FoodItemOrder" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_FoodItemOrder_FoodItem" Association="DataModel.Store.FK_FoodItemOrder_FoodItem">
+      <End Role="FoodItem" EntitySet="FoodItems" />
+      <End Role="FoodItemOrder" EntitySet="FoodItemOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FoodItemOrder_Order" Association="DataModel.Store.FK_FoodItemOrder_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="FoodItemOrder" EntitySet="FoodItemOrder" />
+    </AssociationSet>
+    <AssociationSet Name="ReviewCustomer" Association="DataModel.Store.ReviewCustomer">
+      <End Role="Review" EntitySet="Reviews" />
+      <End Role="Customer" EntitySet="Users_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="ReservationCustomer" Association="DataModel.Store.ReservationCustomer">
+      <End Role="Reservation" EntitySet="Reservations" />
+      <End Role="Customer" EntitySet="Users_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeWorkSchedule" Association="DataModel.Store.EmployeeWorkSchedule">
+      <End Role="Employee" EntitySet="Users_Employee" />
+      <End Role="WorkSchedule" EntitySet="WorkSchedules" />
+    </AssociationSet>
+    <AssociationSet Name="OrderTable" Association="DataModel.Store.OrderTable">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Table" EntitySet="Tables" />
+    </AssociationSet>
+    <AssociationSet Name="ServerTable" Association="DataModel.Store.ServerTable">
+      <End Role="Server" EntitySet="Users_Server" />
+      <End Role="Table" EntitySet="Tables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_inherits_User" Association="DataModel.Store.FK_Customer_inherits_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Customer" EntitySet="Users_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_inherits_User" Association="DataModel.Store.FK_Employee_inherits_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Employee" EntitySet="Users_Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Server_inherits_Employee" Association="DataModel.Store.FK_Server_inherits_Employee">
+      <End Role="Employee" EntitySet="Users_Employee" />
+      <End Role="Server" EntitySet="Users_Server" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitchen_inherits_Employee" Association="DataModel.Store.FK_Kitchen_inherits_Employee">
+      <End Role="Employee" EntitySet="Users_Employee" />
+      <End Role="Kitchen" EntitySet="Users_Kitchen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Manager_inherits_Employee" Association="DataModel.Store.FK_Manager_inherits_Employee">
+      <End Role="Employee" EntitySet="Users_Employee" />
+      <End Role="Manager" EntitySet="Users_Manager" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TotalPrice" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Tip" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FoodItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reservations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Customers_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfVisit" Type="datetime" Nullable="false" />
+    <Property Name="DateOfPost" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="Customers_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkSchedules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Start" Type="datetime" Nullable="false" />
+    <Property Name="End" Type="datetime" Nullable="false" />
+    <Property Name="Hours" Type="int" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Restaurants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MondayStart" Type="datetime" Nullable="false" />
+    <Property Name="TuesdayStart" Type="datetime" Nullable="false" />
+    <Property Name="WednesdayStart" Type="datetime" Nullable="false" />
+    <Property Name="ThursdayStart" Type="datetime" Nullable="false" />
+    <Property Name="FridayStart" Type="datetime" Nullable="false" />
+    <Property Name="SaturdayStart" Type="datetime" Nullable="false" />
+    <Property Name="SundayStart" Type="datetime" Nullable="false" />
+    <Property Name="MondayEnd" Type="datetime" Nullable="false" />
+    <Property Name="TuesdayEnd" Type="datetime" Nullable="false" />
+    <Property Name="WednesdayEnd" Type="datetime" Nullable="false" />
+    <Property Name="ThursdayEnd" Type="datetime" Nullable="false" />
+    <Property Name="FridayEnd" Type="datetime" Nullable="false" />
+    <Property Name="SaturdayEnd" Type="datetime" Nullable="false" />
+    <Property Name="SundayEnd" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Cuisine" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Tables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumPeople" Type="int" Nullable="false" />
+    <Property Name="TableStatus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Order_Id" Type="int" Nullable="false" />
+    <Property Name="Server_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Availability" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HoursPerWeek" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PayRate" Type="int" Nullable="true" />
+    <Property Name="Salary" Type="int" Nullable="true" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Server">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="NumTables" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Kitchen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Role" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Manager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FoodItemOrder">
+    <Key>
+      <PropertyRef Name="FoodItem_Id" />
+      <PropertyRef Name="Orders_Id" />
+    </Key>
+    <Property Name="FoodItem_Id" Type="int" Nullable="false" />
+    <Property Name="Orders_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ReviewCustomer">
+    <End Role="Review" Type="DataModel.Store.Reviews" Multiplicity="*" />
+    <End Role="Customer" Type="DataModel.Store.Users_Customer" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="Customers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReservationCustomer">
+    <End Role="Reservation" Type="DataModel.Store.Reservations" Multiplicity="*" />
+    <End Role="Customer" Type="DataModel.Store.Users_Customer" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="Customers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeWorkSchedule">
+    <End Role="Employee" Type="DataModel.Store.Users_Employee" Multiplicity="1" />
+    <End Role="WorkSchedule" Type="DataModel.Store.WorkSchedules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkSchedule">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderTable">
+    <End Role="Order" Type="DataModel.Store.Orders" Multiplicity="1" />
+    <End Role="Table" Type="DataModel.Store.Tables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Table">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServerTable">
+    <End Role="Server" Type="DataModel.Store.Users_Server" Multiplicity="1" />
+    <End Role="Table" Type="DataModel.Store.Tables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Server">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Table">
+        <PropertyRef Name="Server_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FoodItemOrder_FoodItem">
+    <End Role="FoodItem" Type="DataModel.Store.FoodItems" Multiplicity="1" />
+    <End Role="FoodItemOrder" Type="DataModel.Store.FoodItemOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FoodItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoodItemOrder">
+        <PropertyRef Name="FoodItem_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FoodItemOrder_Order">
+    <End Role="FoodItemOrder" Type="DataModel.Store.FoodItemOrder" Multiplicity="*" />
+    <End Role="Order" Type="DataModel.Store.Orders" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoodItemOrder">
+        <PropertyRef Name="Orders_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_inherits_User">
+    <End Role="User" Type="DataModel.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Customer" Type="DataModel.Store.Users_Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_inherits_User">
+    <End Role="User" Type="DataModel.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="DataModel.Store.Users_Employee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Server_inherits_Employee">
+    <End Role="Employee" Type="DataModel.Store.Users_Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Server" Type="DataModel.Store.Users_Server" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Server">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitchen_inherits_Employee">
+    <End Role="Employee" Type="DataModel.Store.Users_Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Kitchen" Type="DataModel.Store.Users_Kitchen" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kitchen">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Manager_inherits_Employee">
+    <End Role="Employee" Type="DataModel.Store.Users_Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Manager" Type="DataModel.Store.Users_Manager" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Manager">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -58,7 +409,7 @@
           <Property Name="CreationDate" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="Kitchen" BaseType="DataModel.Employee">
-          <Property Name="Role" Type="String" Nullable="false" />
+          <Property Name="Role" Type="DataModel.KitchenRole" Nullable="true" />
         </EntityType>
         <EntityType Name="Server" BaseType="DataModel.Employee">
           <Property Name="NumTables" Type="Int32" Nullable="false" />
@@ -70,8 +421,8 @@
           <Property Name="Availability" Type="String" Nullable="false" />
           <NavigationProperty Name="WorkSchedules" Relationship="DataModel.EmployeeWorkSchedule" FromRole="Employee" ToRole="WorkSchedule" />
           <Property Name="HoursPerWeek" Type="String" Nullable="false" />
-          <Property Name="PayRate" Type="String" Nullable="true" />
-          <Property Name="Salary" Type="String" Nullable="true" />
+          <Property Name="PayRate" Type="Int32" Nullable="true" />
+          <Property Name="Salary" Type="Int32" Nullable="true" />
         </EntityType>
         <EntityType Name="Customer" BaseType="DataModel.User">
           <NavigationProperty Name="Review" Relationship="DataModel.ReviewCustomer" FromRole="Customer" ToRole="Review" />
@@ -83,8 +434,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="FoodItem" Relationship="DataModel.FoodItemOrder" FromRole="Order" ToRole="FoodItem" />
-          <Property Name="TotalPrice" Type="String" Nullable="false" />
-          <Property Name="Tip" Type="String" Nullable="false" />
+          <Property Name="TotalPrice" Type="String" Nullable="true" />
+          <Property Name="Tip" Type="String" Nullable="true" />
           <Property Name="State" Type="String" Nullable="false" />
           <NavigationProperty Name="Tables" Relationship="DataModel.OrderTable" FromRole="Order" ToRole="Table" />
         </EntityType>
@@ -94,7 +445,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" />
           <Property Name="Price" Type="String" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="DataModel.FoodItemOrder" FromRole="FoodItem" ToRole="Order" />
         </EntityType>
@@ -117,9 +468,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" Nullable="false" />
-          <Property Name="DateOfVisit" Type="String" Nullable="false" />
-          <Property Name="DateOfPost" Type="String" Nullable="false" />
+          <Property Name="DateOfVisit" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfPost" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Customers" Relationship="DataModel.ReviewCustomer" FromRole="Review" ToRole="Customer" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="ReviewCustomer">
           <End Type="DataModel.Review" Role="Review" Multiplicity="*" />
@@ -134,9 +486,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Start" Type="String" Nullable="false" />
-          <Property Name="End" Type="String" Nullable="false" />
-          <Property Name="Hours" Type="String" Nullable="false" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="End" Type="DateTime" Nullable="false" />
+          <Property Name="Hours" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="DataModel.EmployeeWorkSchedule" FromRole="WorkSchedule" ToRole="Employee" />
         </EntityType>
         <Association Name="EmployeeWorkSchedule">
@@ -169,8 +521,8 @@
           <Property Name="FridayEnd" Type="DateTime" Nullable="false" />
           <Property Name="SaturdayEnd" Type="DateTime" Nullable="false" />
           <Property Name="SundayEnd" Type="DateTime" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" />
-          <Property Name="Cuisine" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="Cuisine" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="Table">
           <Key>
@@ -190,17 +542,198 @@
           <End Type="DataModel.Server" Role="Server" Multiplicity="1" />
           <End Type="DataModel.Table" Role="Table" Multiplicity="*" />
         </Association>
+        <EnumType Name="TableStatus">
+          <Member Name="Open" />
+          <Member Name="Filled" />
+        </EnumType>
+        <EnumType Name="KitchenRole">
+          <Member Name="HeadChef" />
+          <Member Name="LineChef" />
+          <Member Name="Chef" />
+          <Member Name="Dessert" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="DataModel" />
-        <Alias Key="Target" Value="DataModel.Store" />
-        <EntityContainerMapping CdmEntityContainer="DataModelContainer" StorageEntityContainer="DataModelTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Customer)">
+        <MappingFragment StoreEntitySet="Users_Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Employee)">
+        <MappingFragment StoreEntitySet="Users_Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+          <ScalarProperty Name="HoursPerWeek" ColumnName="HoursPerWeek" />
+          <ScalarProperty Name="PayRate" ColumnName="PayRate" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Server)">
+        <MappingFragment StoreEntitySet="Users_Server">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NumTables" ColumnName="NumTables" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Kitchen)">
+        <MappingFragment StoreEntitySet="Users_Kitchen">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Manager)">
+        <MappingFragment StoreEntitySet="Users_Manager">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoodItems">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.FoodItem)">
+        <MappingFragment StoreEntitySet="FoodItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Reservation)">
+        <MappingFragment StoreEntitySet="Reservations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Review)">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DateOfVisit" ColumnName="DateOfVisit" />
+          <ScalarProperty Name="DateOfPost" ColumnName="DateOfPost" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkSchedules">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.WorkSchedule)">
+        <MappingFragment StoreEntitySet="WorkSchedules">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="End" ColumnName="End" />
+          <ScalarProperty Name="Hours" ColumnName="Hours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Restaurant)">
+        <MappingFragment StoreEntitySet="Restaurants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MondayStart" ColumnName="MondayStart" />
+          <ScalarProperty Name="TuesdayStart" ColumnName="TuesdayStart" />
+          <ScalarProperty Name="WednesdayStart" ColumnName="WednesdayStart" />
+          <ScalarProperty Name="ThursdayStart" ColumnName="ThursdayStart" />
+          <ScalarProperty Name="FridayStart" ColumnName="FridayStart" />
+          <ScalarProperty Name="SaturdayStart" ColumnName="SaturdayStart" />
+          <ScalarProperty Name="SundayStart" ColumnName="SundayStart" />
+          <ScalarProperty Name="MondayEnd" ColumnName="MondayEnd" />
+          <ScalarProperty Name="TuesdayEnd" ColumnName="TuesdayEnd" />
+          <ScalarProperty Name="WednesdayEnd" ColumnName="WednesdayEnd" />
+          <ScalarProperty Name="ThursdayEnd" ColumnName="ThursdayEnd" />
+          <ScalarProperty Name="FridayEnd" ColumnName="FridayEnd" />
+          <ScalarProperty Name="SaturdayEnd" ColumnName="SaturdayEnd" />
+          <ScalarProperty Name="SundayEnd" ColumnName="SundayEnd" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Cuisine" ColumnName="Cuisine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tables">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Table)">
+        <MappingFragment StoreEntitySet="Tables">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NumPeople" ColumnName="NumPeople" />
+          <ScalarProperty Name="TableStatus" ColumnName="TableStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FoodItemOrder" TypeName="DataModel.FoodItemOrder" StoreEntitySet="FoodItemOrder">
+      <EndProperty Name="FoodItem">
+        <ScalarProperty Name="Id" ColumnName="FoodItem_Id" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Orders_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ReviewCustomer" TypeName="DataModel.ReviewCustomer" StoreEntitySet="Reviews">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customers_Id" />
+      </EndProperty>
+      <EndProperty Name="Review">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ReservationCustomer" TypeName="DataModel.ReservationCustomer" StoreEntitySet="Reservations">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customers_Id" />
+      </EndProperty>
+      <EndProperty Name="Reservation">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmployeeWorkSchedule" TypeName="DataModel.EmployeeWorkSchedule" StoreEntitySet="WorkSchedules">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="Id" ColumnName="Employee_Id" />
+      </EndProperty>
+      <EndProperty Name="WorkSchedule">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderTable" TypeName="DataModel.OrderTable" StoreEntitySet="Tables">
+      <EndProperty Name="Order">
+        <ScalarProperty Name="Id" ColumnName="Order_Id" />
+      </EndProperty>
+      <EndProperty Name="Table">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ServerTable" TypeName="DataModel.ServerTable" StoreEntitySet="Tables">
+      <EndProperty Name="Server">
+        <ScalarProperty Name="Id" ColumnName="Server_Id" />
+      </EndProperty>
+      <EndProperty Name="Table">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -214,6 +747,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

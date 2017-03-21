@@ -17,6 +17,7 @@ namespace RestaurantManagement.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
+
             return View();
         }
 
