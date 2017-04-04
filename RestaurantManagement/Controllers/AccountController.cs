@@ -20,8 +20,7 @@ namespace RestaurantManagement.Controllers
 
         public AccountController()
         {
-            //testing pull request..
-            Console.Write("What");
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
