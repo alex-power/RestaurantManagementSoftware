@@ -96,7 +96,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
   </EntityType>
   <EntityType Name="Reservations">
     <Key>
@@ -134,20 +134,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="MondayStart" Type="datetime" Nullable="false" />
-    <Property Name="TuesdayStart" Type="datetime" Nullable="false" />
-    <Property Name="WednesdayStart" Type="datetime" Nullable="false" />
-    <Property Name="ThursdayStart" Type="datetime" Nullable="false" />
-    <Property Name="FridayStart" Type="datetime" Nullable="false" />
-    <Property Name="SaturdayStart" Type="datetime" Nullable="false" />
-    <Property Name="SundayStart" Type="datetime" Nullable="false" />
-    <Property Name="MondayEnd" Type="datetime" Nullable="false" />
-    <Property Name="TuesdayEnd" Type="datetime" Nullable="false" />
-    <Property Name="WednesdayEnd" Type="datetime" Nullable="false" />
-    <Property Name="ThursdayEnd" Type="datetime" Nullable="false" />
-    <Property Name="FridayEnd" Type="datetime" Nullable="false" />
-    <Property Name="SaturdayEnd" Type="datetime" Nullable="false" />
-    <Property Name="SundayEnd" Type="datetime" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Cuisine" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
@@ -188,7 +174,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Role" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Role" Type="int" Nullable="true" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Users_Manager">
@@ -446,7 +432,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="true" />
-          <Property Name="Price" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="DataModel.FoodItemOrder" FromRole="FoodItem" ToRole="Order" />
         </EntityType>
         <Association Name="FoodItemOrder">
@@ -507,20 +493,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="MondayStart" Type="DateTime" Nullable="false" />
-          <Property Name="TuesdayStart" Type="DateTime" Nullable="false" />
-          <Property Name="WednesdayStart" Type="DateTime" Nullable="false" />
-          <Property Name="ThursdayStart" Type="DateTime" Nullable="false" />
-          <Property Name="FridayStart" Type="DateTime" Nullable="false" />
-          <Property Name="SaturdayStart" Type="DateTime" Nullable="false" />
-          <Property Name="SundayStart" Type="DateTime" Nullable="false" />
-          <Property Name="MondayEnd" Type="DateTime" Nullable="false" />
-          <Property Name="TuesdayEnd" Type="DateTime" Nullable="false" />
-          <Property Name="WednesdayEnd" Type="DateTime" Nullable="false" />
-          <Property Name="ThursdayEnd" Type="DateTime" Nullable="false" />
-          <Property Name="FridayEnd" Type="DateTime" Nullable="false" />
-          <Property Name="SaturdayEnd" Type="DateTime" Nullable="false" />
-          <Property Name="SundayEnd" Type="DateTime" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="true" />
           <Property Name="Cuisine" Type="String" Nullable="true" />
         </EntityType>
@@ -656,20 +628,6 @@
         <MappingFragment StoreEntitySet="Restaurants">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="MondayStart" ColumnName="MondayStart" />
-          <ScalarProperty Name="TuesdayStart" ColumnName="TuesdayStart" />
-          <ScalarProperty Name="WednesdayStart" ColumnName="WednesdayStart" />
-          <ScalarProperty Name="ThursdayStart" ColumnName="ThursdayStart" />
-          <ScalarProperty Name="FridayStart" ColumnName="FridayStart" />
-          <ScalarProperty Name="SaturdayStart" ColumnName="SaturdayStart" />
-          <ScalarProperty Name="SundayStart" ColumnName="SundayStart" />
-          <ScalarProperty Name="MondayEnd" ColumnName="MondayEnd" />
-          <ScalarProperty Name="TuesdayEnd" ColumnName="TuesdayEnd" />
-          <ScalarProperty Name="WednesdayEnd" ColumnName="WednesdayEnd" />
-          <ScalarProperty Name="ThursdayEnd" ColumnName="ThursdayEnd" />
-          <ScalarProperty Name="FridayEnd" ColumnName="FridayEnd" />
-          <ScalarProperty Name="SaturdayEnd" ColumnName="SaturdayEnd" />
-          <ScalarProperty Name="SundayEnd" ColumnName="SundayEnd" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Cuisine" ColumnName="Cuisine" />
         </MappingFragment>

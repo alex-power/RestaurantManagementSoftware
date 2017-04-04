@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/13/2017 18:47:47
--- Generated from EDMX file: D:\Documents\RestaurantManagement\RestaurantManagementSoftware\RestaurantManagement\DataModel.edmx
+-- Date Created: 03/21/2017 15:02:47
+-- Generated from EDMX file: c:\users\power\documents\visual studio 2015\Projects\RestaurantManagement\RestaurantManagement\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -130,7 +130,7 @@ CREATE TABLE [dbo].[FoodItems] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Description] nvarchar(max)  NULL,
-    [Price] nvarchar(max)  NOT NULL
+    [Price] decimal(18,0)  NOT NULL
 );
 GO
 
@@ -168,20 +168,6 @@ GO
 CREATE TABLE [dbo].[Restaurants] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [MondayStart] datetime  NOT NULL,
-    [TuesdayStart] datetime  NOT NULL,
-    [WednesdayStart] datetime  NOT NULL,
-    [ThursdayStart] datetime  NOT NULL,
-    [FridayStart] datetime  NOT NULL,
-    [SaturdayStart] datetime  NOT NULL,
-    [SundayStart] datetime  NOT NULL,
-    [MondayEnd] datetime  NOT NULL,
-    [TuesdayEnd] datetime  NOT NULL,
-    [WednesdayEnd] datetime  NOT NULL,
-    [ThursdayEnd] datetime  NOT NULL,
-    [FridayEnd] datetime  NOT NULL,
-    [SaturdayEnd] datetime  NOT NULL,
-    [SundayEnd] datetime  NOT NULL,
     [Description] nvarchar(max)  NULL,
     [Cuisine] nvarchar(max)  NULL
 );
@@ -222,7 +208,7 @@ GO
 
 -- Creating table 'Users_Kitchen'
 CREATE TABLE [dbo].[Users_Kitchen] (
-    [Role] nvarchar(max)  NULL,
+    [Role] int  NULL,
     [Id] int  NOT NULL
 );
 GO
