@@ -21,7 +21,7 @@ namespace RestaurantManagement
         }
     
         public string Availability { get; set; }
-        public string HoursPerWeek { get; set; }
+        public int HoursPerWeek { get; set; }
         public Nullable<int> PayRate { get; set; }
         public Nullable<int> Salary { get; set; }
     

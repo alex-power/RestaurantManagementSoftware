@@ -14,6 +14,6 @@ namespace RestaurantManagement
     
     public partial class Kitchen : Employee
     {
-        public Nullable<KitchenRole> Role { get; set; }
+        public string Role { get; set; }
     }
 }

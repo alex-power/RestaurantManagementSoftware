@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/21/2017 15:02:47
--- Generated from EDMX file: c:\users\power\documents\visual studio 2015\Projects\RestaurantManagement\RestaurantManagement\DataModel.edmx
+-- Date Created: 04/04/2017 18:31:31
+-- Generated from EDMX file: C:\Users\power\documents\visual studio 2015\Projects\RestaurantManagement\RestaurantManagement\DataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,35 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_FoodItemOrder_FoodItem]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[FoodItemOrder] DROP CONSTRAINT [FK_FoodItemOrder_FoodItem];
-GO
-IF OBJECT_ID(N'[dbo].[FK_FoodItemOrder_Order]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[FoodItemOrder] DROP CONSTRAINT [FK_FoodItemOrder_Order];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ReviewCustomer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewCustomer];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ReservationCustomer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Reservations] DROP CONSTRAINT [FK_ReservationCustomer];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmployeeWorkSchedule]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[WorkSchedules] DROP CONSTRAINT [FK_EmployeeWorkSchedule];
-GO
-IF OBJECT_ID(N'[dbo].[FK_OrderTable]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Tables] DROP CONSTRAINT [FK_OrderTable];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ServerTable]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Tables] DROP CONSTRAINT [FK_ServerTable];
-GO
 IF OBJECT_ID(N'[dbo].[FK_Customer_inherits_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users_Customer] DROP CONSTRAINT [FK_Customer_inherits_User];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Employee_inherits_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users_Employee] DROP CONSTRAINT [FK_Employee_inherits_User];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Server_inherits_Employee]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Users_Server] DROP CONSTRAINT [FK_Server_inherits_Employee];
+IF OBJECT_ID(N'[dbo].[FK_EmployeeWorkSchedule]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[WorkSchedules] DROP CONSTRAINT [FK_EmployeeWorkSchedule];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FoodItemOrder_FoodItem]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FoodItemOrder] DROP CONSTRAINT [FK_FoodItemOrder_FoodItem];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FoodItemOrder_Order]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[FoodItemOrder] DROP CONSTRAINT [FK_FoodItemOrder_Order];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Kitchen_inherits_Employee]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users_Kitchen] DROP CONSTRAINT [FK_Kitchen_inherits_Employee];
@@ -53,34 +38,49 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Manager_inherits_Employee]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users_Manager] DROP CONSTRAINT [FK_Manager_inherits_Employee];
 GO
+IF OBJECT_ID(N'[dbo].[FK_OrderTable]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tables] DROP CONSTRAINT [FK_OrderTable];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReservationCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reservations] DROP CONSTRAINT [FK_ReservationCustomer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ReviewCustomer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_ReviewCustomer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Server_inherits_Employee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Server] DROP CONSTRAINT [FK_Server_inherits_Employee];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ServerTable]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tables] DROP CONSTRAINT [FK_ServerTable];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Users];
-GO
-IF OBJECT_ID(N'[dbo].[Orders]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Orders];
+IF OBJECT_ID(N'[dbo].[FoodItemOrder]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FoodItemOrder];
 GO
 IF OBJECT_ID(N'[dbo].[FoodItems]', 'U') IS NOT NULL
     DROP TABLE [dbo].[FoodItems];
 GO
+IF OBJECT_ID(N'[dbo].[Orders]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Orders];
+GO
 IF OBJECT_ID(N'[dbo].[Reservations]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Reservations];
-GO
-IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Reviews];
-GO
-IF OBJECT_ID(N'[dbo].[WorkSchedules]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[WorkSchedules];
 GO
 IF OBJECT_ID(N'[dbo].[Restaurants]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Restaurants];
 GO
+IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Reviews];
+GO
 IF OBJECT_ID(N'[dbo].[Tables]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Tables];
+GO
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
 GO
 IF OBJECT_ID(N'[dbo].[Users_Customer]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users_Customer];
@@ -88,17 +88,17 @@ GO
 IF OBJECT_ID(N'[dbo].[Users_Employee]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users_Employee];
 GO
-IF OBJECT_ID(N'[dbo].[Users_Server]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Users_Server];
-GO
 IF OBJECT_ID(N'[dbo].[Users_Kitchen]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users_Kitchen];
 GO
 IF OBJECT_ID(N'[dbo].[Users_Manager]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users_Manager];
 GO
-IF OBJECT_ID(N'[dbo].[FoodItemOrder]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[FoodItemOrder];
+IF OBJECT_ID(N'[dbo].[Users_Server]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users_Server];
+GO
+IF OBJECT_ID(N'[dbo].[WorkSchedules]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[WorkSchedules];
 GO
 
 -- --------------------------------------------------
@@ -192,7 +192,7 @@ GO
 -- Creating table 'Users_Employee'
 CREATE TABLE [dbo].[Users_Employee] (
     [Availability] nvarchar(max)  NOT NULL,
-    [HoursPerWeek] nvarchar(max)  NOT NULL,
+    [HoursPerWeek] int  NOT NULL,
     [PayRate] int  NULL,
     [Salary] int  NULL,
     [Id] int  NOT NULL
@@ -208,7 +208,7 @@ GO
 
 -- Creating table 'Users_Kitchen'
 CREATE TABLE [dbo].[Users_Kitchen] (
-    [Role] int  NULL,
+    [Role] nvarchar(max)  NOT NULL,
     [Id] int  NOT NULL
 );
 GO
