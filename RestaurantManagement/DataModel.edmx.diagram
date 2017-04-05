@@ -4,31 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8b2df3eca9284fe39ab4aa55c7855ff1" Name="Diagram1" ZoomLevel="92" >
-        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="4.5" PointY="1.125" />
-        <EntityTypeShape EntityType="DataModel.Kitchen" Width="1.5" PointX="2.75" PointY="4.375" />
-        <EntityTypeShape EntityType="DataModel.Server" Width="1.5" PointX="4.5" PointY="4.25" />
-        <EntityTypeShape EntityType="DataModel.Manager" Width="1.5" PointX="0.875" PointY="4.375" />
-        <EntityTypeShape EntityType="DataModel.Employee" Width="1.5" PointX="2.75" PointY="1.625" />
-        <EntityTypeShape EntityType="DataModel.Customer" Width="1.5" PointX="7" PointY="1.75" />
-        <InheritanceConnector EntityType="DataModel.Employee" />
-        <InheritanceConnector EntityType="DataModel.Customer" />
-        <InheritanceConnector EntityType="DataModel.Manager" />
-        <InheritanceConnector EntityType="DataModel.Kitchen" />
-        <InheritanceConnector EntityType="DataModel.Server" />
-        <EntityTypeShape EntityType="DataModel.Order" Width="1.5" PointX="2.625" PointY="6.375" />
-        <EntityTypeShape EntityType="DataModel.FoodItem" Width="1.5" PointX="0.625" PointY="6.375" />
-        <AssociationConnector Association="DataModel.FoodItemOrder" />
-        <EntityTypeShape EntityType="DataModel.Reservation" Width="1.5" PointX="7" PointY="3.75" />
-        <EntityTypeShape EntityType="DataModel.Review" Width="1.5" PointX="9" PointY="1.75" />
-        <AssociationConnector Association="DataModel.ReviewCustomer" />
-        <AssociationConnector Association="DataModel.ReservationCustomer" />
-        <EntityTypeShape EntityType="DataModel.WorkSchedule" Width="1.5" PointX="0.5" PointY="1.5" />
-        <AssociationConnector Association="DataModel.EmployeeWorkSchedule" />
-        <EntityTypeShape EntityType="DataModel.Restaurant" Width="1.5" PointX="8.75" PointY="4.5" />
-        <EntityTypeShape EntityType="DataModel.Table" Width="1.5" PointX="4.625" PointY="6.375" />
-        <AssociationConnector Association="DataModel.OrderTable" />
-        <AssociationConnector Association="DataModel.ServerTable" />
+      <Diagram DiagramId="8b2df3eca9284fe39ab4aa55c7855ff1" Name="Diagram1" ZoomLevel="77" >
+        <EntityTypeShape EntityType="DataModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.FoodItemOrder" Width="1.5" PointX="12" PointY="12.25" />
+        <EntityTypeShape EntityType="DataModel.FoodItem" Width="1.5" PointX="9.75" PointY="9.25" />
+        <EntityTypeShape EntityType="DataModel.Order" Width="1.5" PointX="9.75" PointY="12.125" />
+        <EntityTypeShape EntityType="DataModel.Reservation" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="DataModel.Restaurant" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.Review" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="DataModel.Table" Width="1.5" PointX="7.5" PointY="12.25" />
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DataModel.Users_Customer" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="DataModel.Users_Employee" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="DataModel.Users_Kitchen" Width="1.5" PointX="5.25" PointY="9.75" />
+        <EntityTypeShape EntityType="DataModel.Users_Manager" Width="1.5" PointX="5.25" PointY="15" />
+        <EntityTypeShape EntityType="DataModel.Users_Server" Width="1.5" PointX="5.25" PointY="12.25" />
+        <EntityTypeShape EntityType="DataModel.WorkSchedule" Width="1.5" PointX="5.25" PointY="7" />
+        <AssociationConnector Association="DataModel.FK_FoodItemOrder_FoodItem" />
+        <AssociationConnector Association="DataModel.FK_FoodItemOrder_Order" />
+        <AssociationConnector Association="DataModel.FK_Tables" />
+        <AssociationConnector Association="DataModel.FK_ReservationCustomer" />
+        <AssociationConnector Association="DataModel.FK_ReviewCustomer" />
+        <AssociationConnector Association="DataModel.FK_ServerTable" />
+        <AssociationConnector Association="DataModel.FK_Customer_inherits_User" />
+        <AssociationConnector Association="DataModel.FK_Employee_inherits_User" />
+        <AssociationConnector Association="DataModel.FK_EmployeeWorkSchedule" />
+        <AssociationConnector Association="DataModel.FK_Kitchen_inherits_Employee" />
+        <AssociationConnector Association="DataModel.FK_Manager_inherits_Employee" />
+        <AssociationConnector Association="DataModel.FK_Server_inherits_Employee" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

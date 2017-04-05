@@ -29,5 +29,7 @@ namespace RestaurantManagement.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<RestaurantManagement.Table> Tables { get; set; }
     }
 }

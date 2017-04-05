@@ -12,13 +12,8 @@ namespace RestaurantManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class WorkSchedule
+    public partial class C__RefactorLog
     {
-        public int Id { get; set; }
-        public System.DateTime Start { get; set; }
-        public System.DateTime End { get; set; }
-        public int Hours { get; set; }
-    
-        public virtual Users_Employee Users_Employee { get; set; }
+        public System.Guid OperationKey { get; set; }
     }
 }

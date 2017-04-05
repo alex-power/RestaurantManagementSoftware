@@ -12,8 +12,10 @@ namespace RestaurantManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Kitchen : Employee
+    public partial class Users_Manager
     {
-        public string Role { get; set; }
+        public int Id { get; set; }
+    
+        public virtual Users_Employee Users_Employee { get; set; }
     }
 }

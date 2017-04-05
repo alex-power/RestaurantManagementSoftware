@@ -25,13 +25,20 @@ namespace RestaurantManagement
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
+        public virtual DbSet<FoodItemOrder> FoodItemOrders { get; set; }
         public virtual DbSet<FoodItem> FoodItems { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
-        public virtual DbSet<Review> Reviews { get; set; }
-        public virtual DbSet<WorkSchedule> WorkSchedules { get; set; }
         public virtual DbSet<Restaurant> Restaurants { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Table> Tables { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Users_Customer> Users_Customer { get; set; }
+        public virtual DbSet<Users_Employee> Users_Employee { get; set; }
+        public virtual DbSet<Users_Kitchen> Users_Kitchen { get; set; }
+        public virtual DbSet<Users_Manager> Users_Manager { get; set; }
+        public virtual DbSet<Users_Server> Users_Server { get; set; }
+        public virtual DbSet<WorkSchedule> WorkSchedules { get; set; }
     }
 }

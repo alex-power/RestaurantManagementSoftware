@@ -20,6 +20,6 @@ namespace RestaurantManagement
         public System.DateTime DateOfPost { get; set; }
         public int Rating { get; set; }
     
-        public virtual Customer Customers { get; set; }
+        public virtual Users_Customer Users_Customer { get; set; }
     }
 }

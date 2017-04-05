@@ -12,20 +12,21 @@ namespace RestaurantManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee : User
+    public partial class Users_Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public Users_Customer()
         {
-            this.WorkSchedules = new HashSet<WorkSchedule>();
+            this.Reservations = new HashSet<Reservation>();
+            this.Reviews = new HashSet<Review>();
         }
     
-        public string Availability { get; set; }
-        public int HoursPerWeek { get; set; }
-        public Nullable<int> PayRate { get; set; }
-        public Nullable<int> Salary { get; set; }
+        public int Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkSchedule> WorkSchedules { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Reviews { get; set; }
+        public virtual User User { get; set; }
     }
 }
