@@ -12,13 +12,13 @@ namespace RestaurantManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class WorkSchedule
+    public partial class FoodItemOrder
     {
-        public int Id { get; set; }
-        public System.DateTime Start { get; set; }
-        public System.DateTime End { get; set; }
-        public int Hours { get; set; }
+        public int FoodItem_Id { get; set; }
+        public int Orders_Id { get; set; }
+        public string Note { get; set; }
     
-        public virtual Users_Employee Users_Employee { get; set; }
+        public virtual FoodItem FoodItem { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

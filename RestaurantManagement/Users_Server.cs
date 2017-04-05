@@ -12,17 +12,19 @@ namespace RestaurantManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Server : Employee
+    public partial class Users_Server
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Server()
+        public Users_Server()
         {
             this.Tables = new HashSet<Table>();
         }
     
         public int NumTables { get; set; }
+        public int Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table> Tables { get; set; }
+        public virtual Users_Employee Users_Employee { get; set; }
     }
 }

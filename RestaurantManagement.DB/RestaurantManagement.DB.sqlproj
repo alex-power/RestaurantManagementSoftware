@@ -141,4 +141,7 @@
   <ItemGroup>
     <None Include="Scripts\SetupScript.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="RestaurantManagement.DB.refactorlog" />
+  </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ namespace RestaurantManagement
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            this.FoodItem = new HashSet<FoodItem>();
+            this.FoodItemOrders = new HashSet<FoodItemOrder>();
         }
     
         public int Id { get; set; }
@@ -26,7 +26,7 @@ namespace RestaurantManagement
         public string State { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FoodItem> FoodItem { get; set; }
-        public virtual Table Tables { get; set; }
+        public virtual ICollection<FoodItemOrder> FoodItemOrders { get; set; }
+        public virtual Table Table { get; set; }
     }
 }

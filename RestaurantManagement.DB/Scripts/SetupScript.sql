@@ -19,7 +19,7 @@ INSERT INTO [Users_Kitchen]
 VALUES (SCOPE_IDENTITY())
 
 INSERT INTO [Users]
-(Username, Password, CreationDate, Name)
+(Username, Password, CreationDate, Name, Email)
 VALUES ('kitchen', 'kitchen', SYSDATETIME(), 'kitchen test', 'kitchen@email.com')
 INSERT INTO [Users_Employee]
 (Id)
@@ -29,7 +29,7 @@ INSERT INTO [Users_Kitchen]
 VALUES (SCOPE_IDENTITY())
 
 INSERT INTO [Users]
-(Username, Password, CreationDate, Name)
+(Username, Password, CreationDate, Name, Email)
 VALUES ('customer', 'customer', SYSDATETIME(), 'customer test', 'kitchen@email.com')
 INSERT INTO [Users_Customer]
 (Id)

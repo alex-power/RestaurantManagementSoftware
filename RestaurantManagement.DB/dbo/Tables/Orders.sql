@@ -3,6 +3,11 @@
     [TotalPrice] NVARCHAR (MAX) NULL,
     [Tip]        NVARCHAR (MAX) NULL,
     [State]      NVARCHAR (MAX) NOT NULL,
-    CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED ([Id] ASC)
+	[TableId]	 INT NOT NULL,
+    CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_Tables] FOREIGN KEY ([TableId]) REFERENCES [dbo].[Tables] (Id)
 );
 
+GO
+CREATE NONCLUSTERED INDEX [IX_FK_OrdersTable]
+    ON [dbo].[Orders]([TableId] ASC);

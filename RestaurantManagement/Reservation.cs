@@ -18,6 +18,6 @@ namespace RestaurantManagement
         public System.DateTime DateTime { get; set; }
         public string Note { get; set; }
     
-        public virtual Customer Customers { get; set; }
+        public virtual Users_Customer Users_Customer { get; set; }
     }
 }

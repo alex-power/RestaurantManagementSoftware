@@ -14,11 +14,18 @@ namespace RestaurantManagement
     
     public partial class Table
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Table()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int Id { get; set; }
-        public int NumPeople { get; set; }
+        public int Seats { get; set; }
         public string TableStatus { get; set; }
     
-        public virtual Order Order { get; set; }
-        public virtual Server Server { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual Users_Server Users_Server { get; set; }
     }
 }
